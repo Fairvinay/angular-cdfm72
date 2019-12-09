@@ -38,11 +38,11 @@ export class HelloComponent  {
   selectedMarker;
   markers = [
     // These are all just random coordinates from https://www.random.org/geographic-coordinates/
-    { lat: 22.33159, lng: 105.63233, alpha: 1 },
-    { lat: 7.92658, lng: -12.05228, alpha: 1 },
+    { lat: 22.33159, lng: 80.63233, alpha: 1 },
+    { lat: -12.92658, lng: -12.05228, alpha: 1 },
     { lat: 48.75606, lng: -118.85900, alpha: 1 },
-    { lat: 5.19334, lng: -67.03352, alpha: 1 },
-    { lat: 12.09407, lng: 26.31618, alpha: 1 },
+    { lat: 5.19334, lng: -23.03352, alpha: 1 },
+    { lat: 12.09407, lng: -1.31618, alpha: 1 },
     { lat: 47.92393, lng: 78.58339, alpha: 1 }
   ];
 
