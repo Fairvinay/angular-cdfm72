@@ -33,8 +33,8 @@ export class AppComponent  {
     var s = window.document.createElement("script");
     s.id = "google-map-script";
     s.type = "text/javascript";
-    s.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD2OeS6LkQLeLrdnn_K0Sku1o3R71hOzsU&callback=initMap";
-      
+    s.src = "";
+   //https://maps.googleapis.com/maps/api/js?key=AIzaSyD2OeS6LkQLeLrdnn_K0Sku1o3R71hOzsU&callback=initMap   
     window.document.body.appendChild(s);
   } else {
     this.loadMap();
