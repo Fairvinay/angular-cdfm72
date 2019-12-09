@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule
+  imports:      [ BrowserModule, FormsModule,
   AgmCoreModule.forRoot({
       // please get your own API key here:
       // https://developers.google.com/maps/documentation/javascript/get-api-key
