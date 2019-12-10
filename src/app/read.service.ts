@@ -7,8 +7,8 @@ import {
 } from "@angular/common/http"; 
 import { Observable, of } from "rxjs";
 import { map, catchError, tap } from "rxjs/operators";
-import { flight , user} from "../model/flight.model";
-import { xml2js } from "xml2js";
+//import { flight , user} from "../model/flight.model";
+//import { xml2js } from "xml2js";
 
 const endpoint = "https://www.latlong.net/search.php?keyword=";
 
@@ -61,7 +61,7 @@ export class ReadService {
     return values || {};
   }
   getCityLocation(cityName: string ): Observable<any> {
-    var ele: flight;
+    
 
     return this.http.get(endpoint + ""+cityName).pipe(map(this.extractData));
 
