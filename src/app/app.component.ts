@@ -3,8 +3,6 @@ import {AfterViewInit, Component, ElementRef, ViewChild, OnInit} from '@angular/
 //import { xml2js } from 'xml2js';
 import { ReadService } from "./read.service";
   
-
-
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
@@ -13,7 +11,7 @@ import { ReadService } from "./read.service";
 export class AppComponent  {
   name = 'Angular';
   title ='basics';
-
+  coordinates : any;
   @ViewChild('mapRef', {static: true }) mapElement: ElementRef;
   data =  { "data" : [{ "id": "id", "subject": "subject", "name":"name"}] } ;
 
@@ -23,7 +21,7 @@ export class AppComponent  {
  ngOnInit() {   
     this.renderMap();
   }
-  
+  constructor(private rest: ReadService) { }
 
  renderMap() {
     
@@ -76,7 +74,11 @@ export class AppComponent  {
   
 }
 readCordinates = () => {
-    
+   this.coordinates =  {lat: 24.5373, lng: 81.3042};
+   this.rest.getCityLocation().subscribe(data => {
+      	console.log("data  "+data);
+        
+   });
 
 }
 

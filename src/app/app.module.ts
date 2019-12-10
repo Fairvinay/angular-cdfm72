@@ -6,10 +6,11 @@ import { AgmCoreModule } from '@agm/core';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { DomSanitizer } from '@angular/platform-browser';
-
+import { ReadService } from './read.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule,
+  imports:      [ BrowserModule, FormsModule, HttpClientModule, 
   AgmCoreModule.forRoot({
       // please get your own API key here:
       // https://developers.google.com/maps/documentation/javascript/get-api-key
@@ -17,6 +18,9 @@ import { DomSanitizer } from '@angular/platform-browser';
     })
    ],
   declarations: [ AppComponent, HelloComponent ],
-  bootstrap:    [ AppComponent ]
+  bootstrap:    [ AppComponent ],
+   providers: [
+  ReadService
+   ]
 })
 export class AppModule { }
