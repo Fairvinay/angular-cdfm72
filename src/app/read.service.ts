@@ -8,6 +8,7 @@ import {
 import { Observable, of } from "rxjs";
 import { map, catchError, tap } from "rxjs/operators";
 import { flight , user} from "../model/flight.model";
+import { xml2js } from "xml2js";
 
 const endpoint = "https://www.latlong.net/search.php?keyword=";
 
@@ -19,7 +20,10 @@ export class ReadService {
   private extractData(res: Response) {
     let body = res;
 
-    
+    const parser = new xml2js.Parser({ strict: false, trim: true });
+    parser.parseString(xmlString, (err, result) => {
+      this.xml = result;
+    });
     return body || {};
   }
   getCityLocation(cityName: string ): Observable<any> {
