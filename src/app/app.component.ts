@@ -13,6 +13,7 @@ import {AfterViewInit, Component, ElementRef, ViewChild, OnInit} from '@angular/
 export class AppComponent  {
   name = 'Angular';
   title ='basics';
+  
   @ViewChild('mapRef', {static: true }) mapElement: ElementRef;
   data =  { "data" : [{ "id": "id", "subject": "subject", "name":"name"}] } ;
 
@@ -33,7 +34,7 @@ export class AppComponent  {
     var s = window.document.createElement("script");
     s.id = "google-map-script";
     s.type = "text/javascript";
-    s.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD2OeS6LkQLeLrdnn_K0Sku1o3R71hOzsU&callback=initMap";
+    s.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDH8bDsTXOoJn0EbTK8GLHn_neyvdk1WN4&callback=initMap";
    //https://maps.googleapis.com/maps/api/js?key=AIzaSyD2OeS6LkQLeLrdnn_K0Sku1o3R71hOzsU&callback=initMap   
     window.document.body.appendChild(s);
   } else {
@@ -42,6 +43,12 @@ export class AppComponent  {
 }
 
  loadMap = () => {
+     domparser = new DOMParser();
+ this.domdoc = this.domparser.parseFromString(this.xmlDoc, 'text/xml');
+ let elements = this.domdoc.querySelectorAll("*");
+ for (element of elements){
+   console.log(element.innerHTML);
+ }
   var map = new window['google'].maps.Map(this.mapElement.nativeElement, {
     center: {lat: 24.5373, lng: 81.3042},
     zoom: 8
