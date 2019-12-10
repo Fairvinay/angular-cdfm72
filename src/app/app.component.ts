@@ -74,11 +74,16 @@ export class AppComponent  {
   
 }
 readCordinates = () => {
+  console.log("read cordinated;");
    this.coordinates =  {lat: 24.5373, lng: 81.3042};
-   this.rest.getCityLocation().subscribe(data => {
+   this.rest.getCityLocation("orlando").subscribe(data => {
       	console.log("data  "+data);
         
-   });
+   },error => {
+                  
+                    console.log(error); //gives an object at this point
+                   
+                });
 
 }
 

@@ -46,9 +46,10 @@ export class ReadService {
     parser.parseString(res, (err, result) => {
       this.xml = result;
     });*/
+    
     const parser = new DOMParser();
     const strRes = JSON.stringify(body);
-       
+       console.log("etractData ");
     const doc = parser.parseFromString(strRes, "text/html");
     const values = [];
 
@@ -61,7 +62,7 @@ export class ReadService {
     return values || {};
   }
   getCityLocation(cityName: string ): Observable<any> {
-    
+    console.log(" cityLocation "+cityName);
 
     return this.http.get(endpoint + ""+cityName).pipe(map(this.extractData));
 
