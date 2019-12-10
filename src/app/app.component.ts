@@ -1,7 +1,7 @@
 
 import {AfterViewInit, Component, ElementRef, ViewChild, OnInit} from '@angular/core';
 //import { xml2js } from 'xml2js';
-import { ReadService } from "read.service";
+import { ReadService } from "./read.service";
   
 
 
