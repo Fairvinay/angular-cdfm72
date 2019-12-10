@@ -17,14 +17,48 @@ const endpoint = "https://www.latlong.net/search.php?keyword=";
 export class ReadService {
   constructor(private http: HttpClient) {}
 
+
+ private extractHTMLData(res: Response) {
+    let body = res;
+
+    /*const parser = new xml2js.Parser({ strict: false, trim: true });
+    parser.parseString(res, (err, result) => {
+      this.xml = result;
+    });*/
+    const parser = new DOMParser();
+    const strRes = JSON.stringify(body);
+       
+    const doc = parser.parseFromString(strRes, "text/html");
+    const values = [];
+
+     const p = doc.getElementsByTagName("table");
+
+   for (const item of Array.from(p)) {
+        values.push(item.textContent);
+    }    
+
+    return body || {};
+  }
   private extractData(res: Response) {
     let body = res;
 
-    const parser = new xml2js.Parser({ strict: false, trim: true });
-    parser.parseString(xmlString, (err, result) => {
+    /*const parser = new xml2js.Parser({ strict: false, trim: true });
+    parser.parseString(res, (err, result) => {
       this.xml = result;
-    });
-    return body || {};
+    });*/
+    const parser = new DOMParser();
+    const strRes = JSON.stringify(body);
+       
+    const doc = parser.parseFromString(strRes, "text/html");
+    const values = [];
+
+     const p = doc.getElementsByTagName("table");
+
+   for (const item of Array.from(p)) {
+        values.push(item.textContent);
+    }    
+
+    return values || {};
   }
   getCityLocation(cityName: string ): Observable<any> {
     var ele: flight;
