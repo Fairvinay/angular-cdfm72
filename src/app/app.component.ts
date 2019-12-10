@@ -1,6 +1,6 @@
 
 import {AfterViewInit, Component, ElementRef, ViewChild, OnInit} from '@angular/core';
-
+import { xml2js } from 'xml2js';
 
 
 
@@ -13,7 +13,7 @@ import {AfterViewInit, Component, ElementRef, ViewChild, OnInit} from '@angular/
 export class AppComponent  {
   name = 'Angular';
   title ='basics';
-  
+
   @ViewChild('mapRef', {static: true }) mapElement: ElementRef;
   data =  { "data" : [{ "id": "id", "subject": "subject", "name":"name"}] } ;
 
@@ -43,12 +43,7 @@ export class AppComponent  {
 }
 
  loadMap = () => {
-     domparser = new DOMParser();
- this.domdoc = this.domparser.parseFromString(this.xmlDoc, 'text/xml');
- let elements = this.domdoc.querySelectorAll("*");
- for (element of elements){
-   console.log(element.innerHTML);
- }
+   this.readCordinates();
   var map = new window['google'].maps.Map(this.mapElement.nativeElement, {
     center: {lat: 24.5373, lng: 81.3042},
     zoom: 8
@@ -79,6 +74,9 @@ export class AppComponent  {
       infowindow.open(map, marker);
     });
   
+}
+readCordinates = () => {
+   
 }
 
 

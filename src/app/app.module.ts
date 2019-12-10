@@ -6,7 +6,7 @@ import { AgmCoreModule } from '@agm/core';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { DomSanitizer } from '@angular/platform-browser';
-import * as xml2js from 'xml2js';
+
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule,
