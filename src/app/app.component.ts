@@ -46,7 +46,9 @@ export class AppComponent  {
     center: {lat: 24.5373, lng: 81.3042},
     zoom: 8
   });
-  
+  var geocoder = new google.maps.Geocoder();
+  this.geocodeAddress(geocoder, map);
+
   var marker = new window['google'].maps.Marker({
     position: {lat: 24.5373, lng: 81.3042},
     map: map,
@@ -73,6 +75,23 @@ export class AppComponent  {
     });
   
 }
+
+
+ geocodeAddress = (geocoder, resultsMap)  => {
+        var address = "orleando,Lakeland";
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+
 readCordinates = () => {
   console.log("read cordinated;");
    this.coordinates =  {lat: 24.5373, lng: 81.3042};
